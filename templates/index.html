@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estimation du prix au m²</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="carte">
+    <h1>Estimation du prix au m²</h1>
+    <p class="intro">Renseignez les caractéristiques d'une commune : le modèle estime son prix médian au m².</p>
+
+    <form method="post">
+      {% for prefixe, libelle, options in listes %}
+      <label for="{{ prefixe }}">{{ libelle }}</label>
+      <select id="{{ prefixe }}" name="{{ prefixe }}">
+        {% for option in options %}
+        <option value="{{ option }}" {% if valeurs.get(prefixe) == option %}selected{% endif %}>{{ option[:1]|upper }}{{ option[1:] }}</option>
+        {% endfor %}
+      </select>
+      {% endfor %}
+
+      {% for nom, libelle in champs %}
+      <label for="{{ nom }}">{{ libelle }}</label>
+      <input type="text" inputmode="decimal" id="{{ nom }}" name="{{ nom }}"
+             value="{{ valeurs.get(nom, '') }}" required>
+      {% endfor %}
+
+      <button type="submit">Estimer le prix</button>
+    </form>
+
+    {% if erreur %}
+    <p class="erreur">{{ erreur }}</p>
+    {% endif %}
+
+    {% if prediction is not none %}
+    <div class="resultat">
+      <span>Prix estimé</span>
+      <strong>{{ "{:,}".format(prediction).replace(",", " ") }} €/m²</strong>
+    </div>
+    {% endif %}
+  </main>
+  <footer>Modèle entraîné sur les données publiques de prix immobiliers · Thaseda Saidani</footer>
+</body>
+</html>
