@@ -1,7 +1,3 @@
-## Notebooks
-1. `1_exploration.ipynb` : nettoyage des données et graphiques
-2. `2_comparaison_modeles.ipynb` : comparaison de modèles de régression (le meilleur, un arbre de décision, est utilisé dans l'application)
-
 
 # Estimation du prix au m² — application Flask
 
@@ -16,6 +12,10 @@ Application web qui estime le prix médian au m² d'une commune française
 2. Il est enregistré dans `model.pkl`.
 3. L'application Flask charge le modèle, affiche un formulaire et renvoie
    le prix estimé.
+## Notebooks
+1. `1_exploration.ipynb` : nettoyage des données et graphiques
+2. `2_comparaison_modeles.ipynb` : comparaison de modèles de régression (le meilleur, un arbre de décision, est utilisé dans l'application)
+
 
 ## Lancer l'application
 ```bash
