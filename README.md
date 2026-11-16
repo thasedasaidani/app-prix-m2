@@ -1,3 +1,8 @@
+## Notebooks
+1. `1_exploration.ipynb` : nettoyage des données et graphiques
+2. `2_comparaison_modeles.ipynb` : comparaison de modèles de régression (le meilleur, un arbre de décision, est utilisé dans l'application)
+
+
 # Estimation du prix au m² — application Flask
 
 Application web qui estime le prix médian au m² d'une commune française
